@@ -7,9 +7,9 @@ import de.timweb.seclab.Art;
 import de.timweb.seclab.Game;
 
 public class Player extends Entity {
-	private static final float SPEED = 0.3f;
 	private static final int SHOOTRATE = 200;
-
+	private static final float ACCELERATION = 1/750f;
+	private static final float DEACCELERATION = 1/2000f;
 	
 	private float acc_horz;
 	private float acc_vert;
@@ -17,7 +17,6 @@ public class Player extends Entity {
 	
 	private int lastHurt = 1000;
 	private int lastShoot;
-	private int lastTriple;
 	private int health = 100;
 	private int points = 0;
 	private Image sprite;
@@ -59,13 +58,13 @@ public class Player extends Entity {
 
 	private void move(int delta) {
 		if (Game.dir_left)
-			acc_horz -= delta/750f;
+			acc_horz -= delta * ACCELERATION;
 		if (Game.dir_right)
-			acc_horz += delta/750f;
+			acc_horz += delta* ACCELERATION;
 		if (Game.dir_up)
-			acc_vert -= delta/750f;
+			acc_vert -= delta* ACCELERATION;
 		if (Game.dir_down)
-			acc_vert += delta/750f;
+			acc_vert += delta* ACCELERATION;
 		
 		if(acc_horz > 1)
 			acc_horz = 1;
@@ -77,13 +76,13 @@ public class Player extends Entity {
 			acc_vert = -1;
 		
 		if(acc_vert > 0)
-			acc_vert -= delta/2000f;
+			acc_vert -= delta* DEACCELERATION;
 		if(acc_vert < 0)
-			acc_vert += delta/2000f;
+			acc_vert += delta* DEACCELERATION;
 		if(acc_horz > 0)
-			acc_horz -= delta/2000f;
+			acc_horz -= delta* DEACCELERATION;
 		if(acc_horz < 0)
-			acc_horz += delta/2000f;
+			acc_horz += delta* DEACCELERATION;
 			
 		this.y += acc_vert*delta;
 		this.x += acc_horz*delta;

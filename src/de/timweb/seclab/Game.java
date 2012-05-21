@@ -33,7 +33,6 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	private Graphics g;
 	private Image bgImg;
 	private int bgY;
-	private int beatenEnemys;
 	private Font fontNormal;
 	private Font fontGameOver;
 	private boolean enter;
@@ -83,7 +82,8 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		lastPoint = 0;
 		lastAsteroid = 0;
 		lastLevelUP = 0;
-		
+
+		ASTEROIDRATE = 500;
 		player = new Player();
 		enemy = new EnemyShip(WIDTH/2);
 		entities = new ArrayList<Entity>();
@@ -213,7 +213,6 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		if (enemy != null && !enemy.isAlive()) {
 			addEntity(new Explosion(enemy.getPositionX(), enemy.getPositionY(), Explosion.ENEMY));
 			enemy = new EnemyShip((enemy.getPositionX()+Game.WIDTH/2) % Game.WIDTH);
-			beatenEnemys++;
 			increaseDifficulty();
 		}
 
@@ -224,14 +223,14 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	public static void main(String[] args) {
 		Game game = new Game();
 		
-		String key = JOptionPane.showInputDialog(game,"Es wurde eine Hardwareveränderung festgestellt!\nBitte gib den Lizenzschlüssel erneut ein","Lizenschlüssel eingeben",JOptionPane.WARNING_MESSAGE);
+		String key = JOptionPane.showInputDialog(game,"Es wurde eine Hardwareverï¿½nderung festgestellt!\nBitte gib den Lizenzschlï¿½ssel erneut ein","Lizenschlï¿½ssel eingeben",JOptionPane.WARNING_MESSAGE);
 		
 		if(KeyReader.checkKey(key)){
 			Thread thread = new Thread(game);
 			thread.start();
 		}
 		else{
-			JOptionPane.showMessageDialog(game, "Lizenschlüssel war leider nicht korrekt\nDas Spiel wird jetzt beendet!","Wrong Key",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(game, "Lizenschlï¿½ssel war leider nicht korrekt\nDas Spiel wird jetzt beendet!","Wrong Key",JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
 		

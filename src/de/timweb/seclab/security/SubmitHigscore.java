@@ -2,7 +2,6 @@ package de.timweb.seclab.security;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,10 +10,10 @@ import java.net.URLConnection;
 import javax.swing.JOptionPane;
 
 public class SubmitHigscore {
-	private static final int MIN_POINTS = 5000;
+	private static final int MIN_POINTS = 3000;
 
 	public static void submit(int points) {
-		if (points < 5000)
+		if (points < MIN_POINTS)
 			JOptionPane.showMessageDialog(null, "Du musst mindestens " + MIN_POINTS + " erreichen, um einen Highscore zu submitten!",
 					"Not good enough", JOptionPane.INFORMATION_MESSAGE);
 		else {
@@ -25,7 +24,7 @@ public class SubmitHigscore {
 				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 				
 				if(bufferedReader.readLine().contains("Roger")){
-					JOptionPane.showMessageDialog(null, "Glückwunsch! Du bist mit " + points + " Punkten auf der Highscoreliste!",
+					JOptionPane.showMessageDialog(null, "Glï¿½ckwunsch! Du bist mit " + points + " Punkten auf der Highscoreliste!",
 							"Higscore", JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}
