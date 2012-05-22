@@ -7,6 +7,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Art {
+	public static Image img_dialog_1a;
+	public static Image img_dialog_1b;
+	public static Image img_dialog_2a;
+	public static Image img_dialog_2b;
+	public static Image img_dialog_3a;
+	public static Image img_dialog_3b;
+	
 	public static Image img_background;
 	public static Image img_ship;
 	public static Image img_enemyship;
@@ -31,6 +38,13 @@ public class Art {
 
 	public static void init() {
 		try {
+			img_dialog_1a = ImageIO.read(Art.class.getResource("/res/dialog_1a.png"));
+			img_dialog_1b = ImageIO.read(Art.class.getResource("/res/dialog_1b.png"));
+			img_dialog_2a = ImageIO.read(Art.class.getResource("/res/dialog_2a.png"));
+			img_dialog_2b = ImageIO.read(Art.class.getResource("/res/dialog_2b.png"));
+			img_dialog_3a = ImageIO.read(Art.class.getResource("/res/dialog_3a.png"));
+			img_dialog_3b = ImageIO.read(Art.class.getResource("/res/dialog_3b.png"));
+			
 			img_background = ImageIO.read(Art.class.getResource("/res/bg.png"));
 			img_ship = ImageIO.read(Art.class.getResource("/res/ship.png"));
 			img_enemyship = ImageIO.read(Art.class.getResource("/res/enemy.png"));

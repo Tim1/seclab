@@ -43,6 +43,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	private boolean isSubmitted = false;
 	private static boolean isShooting;
 
+	private static int lastFace;
 	private static int lastPoint;
 	private static int lastAsteroid;
 	private static int lastLevelUP;
@@ -119,6 +120,11 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		g.drawImage(bgImg, 0, bgY / 20 - 640, null);
 		g.drawImage(bgImg, 0, bgY / 20, null);
 
+		if(lastFace < 250)
+			g.drawImage(Art.img_dialog_1a, 0, 0, null);
+		else	
+			g.drawImage(Art.img_dialog_1b, 0, 0, null);
+
 		for (Entity e : entities)
 			e.render(g);
 		for (Entity e : asteroids)
@@ -168,6 +174,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		if(explosion != null)
 			explosion.update(delta);
 		
+		
 		if(isGameOver){
 			if(enter)
 				restart();
@@ -216,6 +223,9 @@ public class Game extends JFrame implements Runnable, KeyListener {
 			increaseDifficulty();
 		}
 
+		lastFace += delta;
+		lastFace %= 500;
+
 		bgY += delta;
 		bgY %= HEIGHT * 20;
 	}
@@ -223,9 +233,9 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	public static void main(String[] args) {
 		Game game = new Game();
 		
-		String key = JOptionPane.showInputDialog(game,"Es wurde eine Hardwarever�nderung festgestellt!\nBitte gib den Lizenzschl�ssel erneut ein","Lizenschl�ssel eingeben",JOptionPane.WARNING_MESSAGE);
+		//String key = JOptionPane.showInputDialog(game,"Es wurde eine Hardwarever�nderung festgestellt!\nBitte gib den Lizenzschl�ssel erneut ein","Lizenschl�ssel eingeben",JOptionPane.WARNING_MESSAGE);
 		
-		if(KeyReader.checkKey(key)){
+		if(true /*KeyReader.checkKey(key)*/){
 			Thread thread = new Thread(game);
 			thread.start();
 		}
