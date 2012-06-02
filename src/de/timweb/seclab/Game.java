@@ -24,7 +24,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	public static final int WIDTH = 640;
 	public static final int HEIGHT = 640;
 
-	private static int ASTEROIDRATE = 500;
+	private static int asteroidrate = 500;
 
 	private int delta;
 	private Image doubleBuffer;
@@ -82,7 +82,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		lastAsteroid = 0;
 		lastLevelUP = 0;
 
-		ASTEROIDRATE = 500;
+		asteroidrate = 500;
 		player = new Player();
 		enemy = new EnemyShip(WIDTH/2);
 		entities = new ArrayList<Entity>();
@@ -184,7 +184,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 			
 		player.update(delta);
 
-		if (lastAsteroid > 1000 * 1000 / ASTEROIDRATE) {
+		if (lastAsteroid > 1000 * 1000 / asteroidrate) {
 			lastAsteroid = 0;
 			asteroids.add(new Asteroid(Asteroid.BIG));
 		}
@@ -240,7 +240,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 			thread.start();
 		}
 		else{
-			JOptionPane.showMessageDialog(game, "Lizenschl�ssel war leider nicht korrekt\nDas Spiel wird jetzt beendet!","Wrong Key",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(game, "Lizenschluessel war leider nicht korrekt\nDas Spiel wird jetzt beendet!","Wrong Key",JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
 		
@@ -327,7 +327,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		lastLevelUP = 0;
 		level++;
 		SoundEffect.LEVELUP.play();
-		ASTEROIDRATE *= 1.2;
+		asteroidrate *= 1.2;
 	}
 
 	public static boolean isShooting() {
