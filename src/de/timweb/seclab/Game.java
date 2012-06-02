@@ -297,7 +297,10 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		case KeyEvent.VK_ENTER:
 			enter = false;
 			break;
-
+		case KeyEvent.VK_M:
+			System.out.println(e.getKeyChar());
+			SoundEffect.mute();
+			break;
 		default:
 			break;
 		}

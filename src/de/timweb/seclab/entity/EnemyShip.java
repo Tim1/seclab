@@ -42,7 +42,7 @@ public class EnemyShip extends Entity {
 
 		if (lastShoot > 25 * 1000 / SHOOTRATE) {
 			lastShoot = 0;
-			SoundEffect.SHOOT2.play();
+//			SoundEffect.SHOOT2.play();
 			Game.addEntity(new Bullet(x, y, 1));
 		}
 		lastDirChange += delta;
