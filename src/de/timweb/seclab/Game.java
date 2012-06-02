@@ -12,12 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import de.timweb.seclab.entity.Asteroid;
-import de.timweb.seclab.entity.Bullet;
 import de.timweb.seclab.entity.EnemyShip;
 import de.timweb.seclab.entity.Entity;
 import de.timweb.seclab.entity.Explosion;
 import de.timweb.seclab.entity.Player;
-import de.timweb.seclab.security.KeyReader;
 import de.timweb.seclab.security.SubmitHigscore;
 
 public class Game extends JFrame implements Runnable, KeyListener {
@@ -69,7 +67,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		fontGameOver = new Font("Arial", Font.BOLD, 96);
 		g.setFont(fontNormal);
 
-
+		SoundEffect.init();
 		Art.init();
 		bgImg = Art.img_background;
 		restart();
@@ -95,7 +93,9 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	public void run() {
 		long timeOld = System.currentTimeMillis();
 		delta = 0;
-
+		
+		SoundEffect.MUSIC.loop();
+		
 		while (true) {
 			timeOld = System.currentTimeMillis();
 
@@ -323,6 +323,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	public static void increaseDifficulty() {
 		lastLevelUP = 0;
 		level++;
+		SoundEffect.LEVELUP.play();
 		ASTEROIDRATE *= 1.2;
 	}
 

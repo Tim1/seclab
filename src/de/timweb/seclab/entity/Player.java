@@ -5,6 +5,7 @@ import java.awt.Image;
 
 import de.timweb.seclab.Art;
 import de.timweb.seclab.Game;
+import de.timweb.seclab.SoundEffect;
 
 public class Player extends Entity {
 	private static final int SHOOTRATE = 200;
@@ -36,6 +37,7 @@ public class Player extends Entity {
 
 		if (Game.isShooting() && ((lastShoot > 25 * 1000 / SHOOTRATE))) {
 			lastShoot = 0;
+			SoundEffect.SHOOT1.play();
 			Game.addEntity(new Bullet(x - 11, y, -1));
 			Game.addEntity(new Bullet(x + 12, y, -1));
 		}
@@ -95,13 +97,8 @@ public class Player extends Entity {
 			double dy = Math.abs(y - a.getPositionY());
 
 			if (Math.sqrt(dx * dx + dy * dy) < (a.getRadius() + radius/3)) {
-				health -= a.getHurtdamage();
-				if(health < 0){
-					health = 0;
-					isAlive = false;
-				}
+				hurt(a.getHurtdamage());
 				a.hurt(100);
-				lastHurt = 0;
 			}
 		}
 	}
@@ -126,10 +123,12 @@ public class Player extends Entity {
 		this.points += points;
 	}
 	
-	public void hurt() {
-		health -= Bullet.DAMAGE;
+	public void hurt(int damage) {
+		SoundEffect.HIT.play();
+		health -= damage;
 		if(health < 0){
 			health = 0;
+			SoundEffect.EXPLODE.play();
 			isAlive = false;
 		}
 		lastHurt = 0;

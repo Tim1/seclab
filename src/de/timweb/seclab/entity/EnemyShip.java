@@ -1,11 +1,11 @@
 package de.timweb.seclab.entity;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import de.timweb.seclab.Art;
 import de.timweb.seclab.Game;
+import de.timweb.seclab.SoundEffect;
 
 public class EnemyShip extends Entity {
 	private static final int SHOOTRATE = 50;
@@ -42,6 +42,7 @@ public class EnemyShip extends Entity {
 
 		if (lastShoot > 25 * 1000 / SHOOTRATE) {
 			lastShoot = 0;
+			SoundEffect.SHOOT2.play();
 			Game.addEntity(new Bullet(x, y, 1));
 		}
 		lastDirChange += delta;

@@ -43,7 +43,7 @@ public class Bullet extends Entity{
 			double dy = Math.abs(y-p.getPositionY());
 			
 			if(Math.sqrt(dx*dx + dy*dy) < p.getRadius()){
-				p.hurt();
+				p.hurt(Bullet.DAMAGE);
 				isAlive = false;
 			}
 		}else{
