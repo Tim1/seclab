@@ -24,9 +24,11 @@ public class SubmitHigscore {
 				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 				
 				if(bufferedReader.readLine().contains("Roger")){
-					JOptionPane.showMessageDialog(null, "Gl�ckwunsch! Du bist mit " + points + " Punkten auf der Highscoreliste!",
+					JOptionPane.showMessageDialog(null, "Glueckwunsch! Du bist mit " + points + " Punkten auf der Highscoreliste!",
 							"Higscore", JOptionPane.INFORMATION_MESSAGE);
-					return;
+				}else{
+					JOptionPane.showMessageDialog(null, "Da ist leider was schief gelaufen",
+							"Error", JOptionPane.ERROR_MESSAGE);
 				}
 				
 			} catch (MalformedURLException e) {
