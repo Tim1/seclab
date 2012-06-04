@@ -16,6 +16,7 @@ import de.timweb.seclab.entity.EnemyShip;
 import de.timweb.seclab.entity.Entity;
 import de.timweb.seclab.entity.Explosion;
 import de.timweb.seclab.entity.Player;
+import de.timweb.seclab.security.KeyReader;
 import de.timweb.seclab.security.SubmitHigscore;
 
 public class Game extends JFrame implements Runnable, KeyListener {
@@ -261,10 +262,11 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	public static void main(String[] args) {
 		Game game = new Game();
 
-		// String key =
-		// JOptionPane.showInputDialog(game,"Es wurde eine Hardwareveraenderung festgestellt!\nBitte gib den Lizenzschluessel erneut ein","Lizenschluessel eingeben",JOptionPane.WARNING_MESSAGE);
+		String key = JOptionPane.showInputDialog(game,
+				"Es wurde eine Hardwareveraenderung festgestellt!\nBitte gib den Lizenzschluessel erneut ein", "Lizenschluessel eingeben",
+				JOptionPane.WARNING_MESSAGE);
 
-		if (true /* KeyReader.checkKey(key) */) {
+		if (KeyReader.checkKey(key)) {
 			Thread thread = new Thread(game);
 			thread.start();
 		} else {
