@@ -4,6 +4,10 @@ Dokumentation (Team Challenge)
 By Tim Schmiedl, Tarek Saier, Milos Babic
 
 
+Licenz-Key
+====
+Licence-Key: 4M8K-15BM-16JN-2342
+
 Ziele
 ====
 Beispiel-Challenge als Grundlage für kommende Szenarios/Challenges
