@@ -6,7 +6,6 @@ import java.awt.Image;
 
 import de.timweb.seclab.Art;
 import de.timweb.seclab.Game;
-import de.timweb.seclab.SoundEffect;
 
 public class Asteroid extends Entity {
 	public static final int BIG = 0;
@@ -57,7 +56,6 @@ public class Asteroid extends Entity {
 			int nextsize;
 			if (radius == 48){
 				nextsize = MEDIUM;
-				SoundEffect.ASTEROID.play();
 			}
 			else if (radius == 24)
 				nextsize = SMALL;

@@ -69,7 +69,6 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		fontGameOver = new Font("Arial", Font.BOLD, 96);
 		g.setFont(fontNormal);
 
-		SoundEffect.init();
 		Art.init();
 		bgImg = Art.img_background;
 		restart();
@@ -96,7 +95,6 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		long timeOld = System.currentTimeMillis();
 		delta = 0;
 
-		SoundEffect.MUSIC.loop();
 
 		while (true) {
 			timeOld = System.currentTimeMillis();
@@ -270,7 +268,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 			Thread thread = new Thread(game);
 			thread.start();
 		} else {
-			JOptionPane.showMessageDialog(game, "Lizenschluessel war leider nicht korrekt\nDas Spiel wird jetzt beendet!", "Wrong Key",
+			JOptionPane.showMessageDialog(game, "Lizenschluessel war leider nicht korrekt\nDas Spiel wird jetzt beendet!", "Falscher Schluessel",
 					JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
@@ -331,7 +329,6 @@ public class Game extends JFrame implements Runnable, KeyListener {
 				dialogSkip = true;
 			break;
 		case KeyEvent.VK_M:
-			SoundEffect.mute();
 			break;
 		default:
 			break;
@@ -363,7 +360,6 @@ public class Game extends JFrame implements Runnable, KeyListener {
 
 		lastLevelUP = 0;
 		level++;
-		SoundEffect.LEVELUP.play();
 		asteroidrate *= 1.2;
 	}
 
