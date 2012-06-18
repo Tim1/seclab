@@ -47,23 +47,23 @@ public enum SoundEffect {
 		}
 	}
 
-	public void play() {
-		if (isMuted)
-			return;
-		new Thread() {
-			@Override
-			public void run() {
-				try {
-					clips[curser].stop();
-					clips[curser].setFramePosition(0);
-					clips[curser].start();
-				} catch (Exception e) {
-				}
-			}
-		}.start();
-
-		curser = ++curser % clips.length;
-	}
+//	public void play() {
+//		if (isMuted)
+//			return;
+//		new Thread() {
+//			@Override
+//			public void run() {
+//				try {
+//					clips[curser].stop();
+//					clips[curser].setFramePosition(0);
+//					clips[curser].start();
+//				} catch (Exception e) {
+//				}
+//			}
+//		}.start();
+//
+//		curser = ++curser % clips.length;
+//	}
 
 	public void loop() {
 		clips[0].loop(-1);
