@@ -213,7 +213,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 
 		player.update(delta);
 
-		if (lastAsteroid > 1000 * 1000 / asteroidrate && level >= 3) {
+		if (lastAsteroid > 1000 * 1000 / asteroidrate || level >= 3) {
 			lastAsteroid = 0;
 			asteroids.add(new Asteroid(Asteroid.BIG));
 		}

@@ -63,6 +63,7 @@ public enum SoundEffect {
 		}.start();
 
 		curser = ++curser % clips.length;
+
 	}
 
 	public void loop() {
