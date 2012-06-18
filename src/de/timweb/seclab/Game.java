@@ -261,17 +261,9 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	public static void main(String[] args) {
 		Game game = new Game();
 
-		// String key =
-		// JOptionPane.showInputDialog(game,"Es wurde eine Hardwareveraenderung festgestellt!\nBitte gib den Lizenzschluessel erneut ein","Lizenschluessel eingeben",JOptionPane.WARNING_MESSAGE);
 
-		if (true /* KeyReader.checkKey(key) */) {
-			Thread thread = new Thread(game);
-			thread.start();
-		} else {
-			JOptionPane.showMessageDialog(game, "Lizenschluessel war leider nicht korrekt\nDas Spiel wird jetzt beendet!", "Wrong Key",
-					JOptionPane.ERROR_MESSAGE);
-			System.exit(0);
-		}
+		Thread thread = new Thread(game);
+		thread.start();
 
 	}
 
