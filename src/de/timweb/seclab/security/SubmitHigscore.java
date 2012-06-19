@@ -18,7 +18,7 @@ public class SubmitHigscore {
 					"Not good enough", JOptionPane.INFORMATION_MESSAGE);
 		else {
 			try {
-				URL url = new URL("http://tareksaier.bplaced.net/notHP/gamescore/addscore.php?score="+points+"&key="+KeyReader.getSubmitKey());
+				URL url = new URL("http://127.0.0.1/addscore.php?score="+points+"&key="+KeyReader.getSubmitKey());
 
 				URLConnection connection = url.openConnection();
 				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
