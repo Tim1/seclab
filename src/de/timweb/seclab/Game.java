@@ -25,24 +25,12 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	public static final int WIDTH = 640;
 	public static final int HEIGHT = 640;
 
-	private static int asteroidrate = 1;
-
-	private int delta;
-	private Image doubleBuffer;
-	private Graphics g;
-	private Image bgImg;
-	private int bgY;
-	private Font fontNormal;
-	private Font fontGameOver;
-	private boolean enter;
-	private static int level;
-
 	public static boolean dir_left, dir_right, dir_up, dir_down;
-	private static boolean isGameOver = false;
-	private boolean isSubmitted = false;
-	private boolean dialogSkip;
-	private static boolean isShooting;
 
+	private static boolean isGameOver = false;
+	private static boolean isShooting;
+	private static int asteroidrate = 1;
+	private static int level;
 	private static int lastFace;
 	private static int lastPoint;
 	private static int lastAsteroid;
@@ -53,8 +41,21 @@ public class Game extends JFrame implements Runnable, KeyListener {
 	private static ArrayList<Entity> entities;
 	private static ArrayList<Asteroid> asteroids;
 
+	private int delta;
+	private Image doubleBuffer;
+	private Graphics g;
+	private Image bgImg;
+	private int bgY;
+	private Font fontNormal;
+	private Font fontGameOver;
+	private boolean enter;
+
+	private boolean isSubmitted = false;
+	private boolean dialogSkip;
+
+
 	public Game() {
-		super("Seclab Asteroids");
+		super("Wormhole eXtreme!");
 		this.setSize(WIDTH, HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -66,7 +67,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 		g = doubleBuffer.getGraphics();
 
 		fontNormal = new Font("Arial", Font.BOLD, 16);
-		fontGameOver = new Font("Arial", Font.BOLD, 96);
+		fontGameOver = new Font("Arial", Font.BOLD, 92);
 		g.setFont(fontNormal);
 
 		Art.init();
@@ -92,6 +93,12 @@ public class Game extends JFrame implements Runnable, KeyListener {
 
 	@Override
 	public void run() {
+		try {
+			Thread.sleep(600);
+		} catch (InterruptedException e) {
+		}
+		dialogSkip = false;
+		
 		long timeOld = System.currentTimeMillis();
 		delta = 0;
 
@@ -141,7 +148,6 @@ public class Game extends JFrame implements Runnable, KeyListener {
 
 		if (level == 0 || level == 2 || level == 4) {
 			g.setColor(Color.white);
-			g.drawString("<M> to Mute/Unmute", 450, 45);
 			g.drawString("Continue with <Enter>", 250, 600);
 
 			this.getGraphics().drawImage(doubleBuffer, 0, 0, null);
@@ -211,7 +217,7 @@ public class Game extends JFrame implements Runnable, KeyListener {
 
 		player.update(delta);
 
-		if (lastAsteroid > 1000 * 1000 / asteroidrate || level >= 3) {
+		if (lastAsteroid > 1000 * 1000 / asteroidrate && level >= 3) {
 			lastAsteroid = 0;
 			asteroids.add(new Asteroid(Asteroid.BIG));
 		}
