@@ -32,23 +32,25 @@ Beispiel für künfige Challenges
 
 Thema & Motivation
 -------------------
-Einführung Reverse-Engineering
-Analysieren von Dateien
-Einführung Auslesen aus Binärdateien
-Vertiefung von Java-Kentnissen (aus anderer Sicht wie in den meisten Vorlesungen)
+- Einführung Reverse-Engineering
+- Analysieren von Dateien
+- Einführung Auslesen aus Binärdateien
+- Vertiefung von Java-Kentnissen (aus anderer Sicht wie in den meisten Vorlesungen)
 
 Beschreibung
 -------------
 --> Einführungstext einfügen <--
+
 - 3 stages --> 3 flags
 - in VM: Webserver (Highscore+submit) + spiel (JRE)
 - Szenariobeschreibung + Hints
 - komplettes Spiel (ohne Lizenschlussel und Flags etc.) als Download nach beenden des Szenarios
-Licence-Key: 4M8K-15BM-16JN-2342
-bla bla bla
+- Licence-Key: 4M8K-15BM-16JN-2342
+- bla bla bla
 
 
 Verlauf des Projektes
 ======================
 wer hat wann was gemacht?
+
 wohl nicht so wichtig, ka ob mans rein machen soll
