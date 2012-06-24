@@ -35,7 +35,7 @@ Um zu verhindern, dass Anwender völlig planlos vor einer Challenge stehen und n
 
 Flags
 -----
-Eine Flag ist im Grunde nichts anderes als eine Zeichenkette/ein String. Eine Flag Beginnt mit "flag_" worauf 20 Zeichen folgen, die Groß- und Kleinbuchstaben sowie die Ziffern 0-9 enthalten können.
+Eine Flag ist im Grunde nichts anderes als eine Zeichenkette/ein String. Eine Flag Beginnt mit "flag\_" worauf 20 Zeichen folgen, die Groß- und Kleinbuchstaben sowie die Ziffern 0-9 enthalten können.
 
 - Beispiel: "flag_CPyI54ejA6Fn7NNW7aM9"
 - Regex: /^flag_[a-zA-Z0-9]{20}$/
@@ -69,7 +69,9 @@ Thema & Motivation
 
 Szenario
 --------
-Einleitungstext: ::
+Einleitungstext:
+
+::
 	In Deinem Freundeskreis wird in den letzten Wochen ein neues Spiel immer beliebter: Wormhole eXtreme! Es gibt eine Online-Bestenliste und jeder versucht, an die Spitze zu gelangen um als bester Spieler aufgeführt zu werden.
 	Dein Kumpel Richard Alpert, derzeitiger Anführer der Besteniste, hat Dir eine Kopie seiner Installation des Spiels zukommen lassen und Dich herausgefordert, seine seit Wochen ungeschlagene Highscore zu überbieten. 
 	Challenge accepted!
@@ -79,9 +81,9 @@ Aufbau
 ------
 Um oben erwähntes Ziel zu erreichen sind mehrere Dinge nötig, die sich zu drei Hauptaufgaben zusammenfassen lassen:
 
-1 Das Spiel starten
-2 Das Spiel manipulieren um die nötige Punktzahl zu erreichen
-3 Die Punktzahl im eigenen Namen submitten 
+#. Das Spiel starten
+#. Das Spiel manipulieren um die nötige Punktzahl zu erreichen
+#. Die Punktzahl im eigenen Namen submitten 
 
 Diese drei Hauptaufgaben stellen jeweils eine Stage dar, an deren Ende eine Flag ausgegeben wird. Stage 1 ist nötig, da das Spiel beim Start einen Lizenzschlüssen verlangt; Stage 2, da Richard Alperts Highscore durch legitimes Spielen nicht erreicht werden kann und Stage 3, da das Spiel die Highscores im "Auslieferungszustand" noch unter dem Namen "Richard Alpert" sumittet.
 
