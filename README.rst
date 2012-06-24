@@ -21,7 +21,7 @@ Szenarios
 
 Flagabgabe
 -----------
-- Struktur der Flags "flags_asdf84a98sdf4a9sd4f"
+- Struktur der Flags: flag_<20 Zeichen (a-z, A-Z, 0-9)>, Beispiel: "flags_asdf84a98sdf4a9sd4f", Regex: /^flag_[a-zA-Z0-9]{20}$/
 - Flaggenerator/Flagüberprüfung (Syntax mit Javascript, echtes Überprüfen mit PHP und Datenbank)
 
 
