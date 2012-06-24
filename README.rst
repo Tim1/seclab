@@ -37,7 +37,7 @@ Flags
 -----
 Eine Flag ist im Grunde nichts anderes als eine Zeichenkette/ein String. Eine Flag Beginnt mit "flag\_" worauf 20 Zeichen folgen, die Groß- und Kleinbuchstaben sowie die Ziffern 0-9 enthalten können.
 
-- Beispiel: "flag_CPyI54ejA6Fn7NNW7aM9"
+- Beispiel: flag_CPyI54ejA6Fn7NNW7aM9
 - Regex: /^flag_[a-zA-Z0-9]{20}$/
 
 Zum generieren von Flags kann der Flaggenerator (flaggenerator.php <Angabe wo zu finden>) verwendet werden. Die Validierung der Syntax einer Flag erfolgt beim Seclab-internen Webserver nach dem Pasten einer Flag in das entsprechende Formularfeld mittels JavaScript. Die wirkliche Prüfung der Validität einer Falg und Zuordnung zu einer Challenge erfolgt nach Absenden des Formulars mittels PHP. Valide Flags und zugehörige Challenges sind in einer Datenbank hinterlegt. 
@@ -71,10 +71,10 @@ Szenario
 --------
 Einleitungstext:
 
-::
 	In Deinem Freundeskreis wird in den letzten Wochen ein neues Spiel immer beliebter: Wormhole eXtreme! Es gibt eine Online-Bestenliste und jeder versucht, an die Spitze zu gelangen um als bester Spieler aufgeführt zu werden.
 	Dein Kumpel Richard Alpert, derzeitiger Anführer der Besteniste, hat Dir eine Kopie seiner Installation des Spiels zukommen lassen und Dich herausgefordert, seine seit Wochen ungeschlagene Highscore zu überbieten. 
 	Challenge accepted!
+
 Ziel der Challenge ist also, selbst an der Spitze von besagter Online-Bestenliste zu stehen.
 
 Aufbau
@@ -105,6 +105,12 @@ Daten/Misc
 
 Verlauf des Projektes
 ======================
-wer hat wann was gemacht?
-
-wohl nicht so wichtig, ka ob mans rein machen soll
+- Erarbeiten möglicher Themengebiete
+- Konzeption Challengestruktur
+- Konzeption Flagsystem
+- Umsetzung Flagsystem
+- Konzeption Beispielchallenge
+- Umsetzung Beispielchallenge
+	+ Game
+	+ Scoreboard
+	+ VM
