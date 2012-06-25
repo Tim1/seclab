@@ -41,7 +41,14 @@ Eine Flag ist im Grunde nichts anderes als eine Zeichenkette/ein String. Eine Fl
 - Beispiel: flag_CPyI54ejA6Fn7NNW7aM9
 - Regex: /^flag_[a-zA-Z0-9]{20}$/
 
-Zum generieren von Flags kann der Flaggenerator (flaggenerator.php <Angabe wo zu finden>) verwendet werden. Die Validierung der Syntax einer Flag erfolgt beim Seclab-internen Webserver nach dem Pasten einer Flag in das entsprechende Formularfeld mittels JavaScript. Die wirkliche Prüfung der Validität einer Falg und Zuordnung zu einer Challenge erfolgt nach Absenden des Formulars mittels PHP. Valide Flags und zugehörige Challenges sind in einer Datenbank hinterlegt. 
+Zum Generieren von Flags kann z.B. folgender PHP-Code verwendet werden:
+
+	<?php
+	for($flag='flag\_'; strlen($flag)<25; $c=rand(48, 122)) $flag .= ($c>57 && $c<65) || ($c>90 && $c<97) ? '' : chr($c);
+	echo $flag;
+	?>
+
+Die Validierung der Syntax einer Flag erfolgt beim Seclab-internen Webserver nach dem Pasten einer Flag in das entsprechende Formularfeld mittels JavaScript. Die wirkliche Prüfung der Validität einer Falg und Zuordnung zu einer Challenge erfolgt nach Absenden des Formulars mittels PHP. Valide Flags und zugehörige Challenges sind in einer Datenbank hinterlegt. 
 
 Virtuelle Maschinen
 -------------------
@@ -100,14 +107,15 @@ Weiterhin wurde Folgendes an der VM getan:
 - Entfernen des Standardusers aus der sudoers-File
 - Einrichten eines VNC-Servers um eine Verbindung zur VM zu ermöglichen
 - Automatischer Start von Webserver und VNC-Server
-- Installation von Tools wie Hexeditor, strings, etc.
+- Installation von Tools wie Java-Decomiler, Hexeditor, etc.
+- Installation von VMware-Tools, um von Joomla aus die IP der VM zu erhalten
 - Erstellen einer Readme-File in der erklärt wird, wie das Tastaturlayout geändert und das Spiel gestartet werden kann
 - "Aufräumen" (leeren von Browser-History, .bash_history, etc.)
 
 Daten/Misc
 ----------
 - Komplettes Spiel (ohne Lizenschlussel und Flags etc.) als Download nach beenden des Szenarios
-- Licence-Key des Spiels: 4M8K-15BM-16JN-2342
+- Lizenz-Key des Spiels: 4M8K-15BM-16JN-2342
 - Root-Password Lubuntu-VM: <in finaler Version aber nicht public auf github ^^>
 
 
