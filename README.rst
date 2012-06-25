@@ -46,7 +46,7 @@ Zum Generieren von Flags kann z.B. folgender PHP-Code verwendet werden:
 ::
 
 	<?php
-	for($flag='flag\_'; strlen($flag)<25; $c=rand(48, 122)) $flag .= ($c>57 && $c<65) || ($c>90 && $c<97) ? '' : chr($c);
+	for($flag='flag_'; strlen($flag)<25; $c=rand(48, 122)) $flag .= ($c>57 && $c<65) || ($c>90 && $c<97) ? '' : chr($c);
 	echo $flag;
 	?>
 
