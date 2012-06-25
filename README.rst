@@ -43,10 +43,12 @@ Eine Flag ist im Grunde nichts anderes als eine Zeichenkette/ein String. Eine Fl
 
 Zum Generieren von Flags kann z.B. folgender PHP-Code verwendet werden:
 
-| <?php
-| for($flag='flag\_'; strlen($flag)<25; $c=rand(48, 122)) $flag .= ($c>57 && $c<65) || ($c>90 && $c<97) ? '' : chr($c);
-| echo $flag;
-| ?>
+.. sourcecode:: php
+
+	<?php
+	for($flag='flag\_'; strlen($flag)<25; $c=rand(48, 122)) $flag .= ($c>57 && $c<65) || ($c>90 && $c<97) ? '' : chr($c);
+	echo $flag;
+	?>
 
 Die Validierung der Syntax einer Flag erfolgt beim Seclab-internen Webserver nach dem Pasten einer Flag in das entsprechende Formularfeld mittels JavaScript. Die wirkliche Prüfung der Validität einer Falg und Zuordnung zu einer Challenge erfolgt nach Absenden des Formulars mittels PHP. Valide Flags und zugehörige Challenges sind in einer Datenbank hinterlegt. 
 
