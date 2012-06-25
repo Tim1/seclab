@@ -25,7 +25,8 @@ Mögliche Bereiche können sein sind jedoch nicht begrenzt auf:
 - Websicherheit (XSS, CSRF, Cookie-/Session-Stealing, etc.)
 - Reverse Engineering
 - Forensik
-- <insert moar (hatten wir da nicht mal analog was zusammengetragen?)>
+- WLAN
+- Kryptographie
 
 Einführung und Hints
 --------------------
@@ -35,7 +36,7 @@ Um zu verhindern, dass Anwender völlig planlos vor einer Challenge stehen und n
 
 Flags
 -----
-Eine Flag ist im Grunde nichts anderes als eine Zeichenkette/ein String. Eine Flag Beginnt mit "flag\_" worauf 20 Zeichen folgen, die Groß- und Kleinbuchstaben sowie die Ziffern 0-9 enthalten können.
+Eine Flag ist im Grunde nichts anderes als eine Zeichenkette/ein String. Eine Flag Beginnt mit "flag\_" worauf 20 Zeichen folgen, die Groß- und Kleinbuchstaben sowie die Ziffern 0-9 sein können.
 
 - Beispiel: flag_CPyI54ejA6Fn7NNW7aM9
 - Regex: /^flag_[a-zA-Z0-9]{20}$/
@@ -44,7 +45,7 @@ Zum generieren von Flags kann der Flaggenerator (flaggenerator.php <Angabe wo zu
 
 Virtuelle Maschinen
 -------------------
-Es ist vorgesehen, dass eine Challenge in Form einer — oder, wenn nötig, mehrerer interagierender — virtuellen Maschine (VM) vorliegt. Beginnt ein Anwender eine Challenge, wird eine solche VM gestartet und dem Anwender die nötigen Zugangsdaten übergeben. Es besteht also eine VM pro Challenge pro aktivem Anwender. Denkbare Zugangsmethoden sind SSH, VNC, x2go, etc. Die Wahl der Methode hängt von der Natur der Challenge ab.
+Es ist vorgesehen, dass eine Challenge in Form einer — oder, wenn nötig, mehrerer interagierender — virtuellen Maschine (VM) vorliegt. Beginnt ein Anwender eine Challenge, wird eine solche VM gestartet und dem Anwender die nötigen Zugangsdaten übergeben. Es besteht also mindestens eine VM pro Challenge pro aktivem Anwender. Denkbare Zugangsmethoden sind SSH, VNC, x2go, etc. Die Wahl der Methode hängt von der Natur der Challenge ab.
 
 Checkliste
 ----------
@@ -52,13 +53,12 @@ Checkliste
 - Zuordnung zu einem Bereich der IT-Sicherheit
 - Einführung (evtl. Hints)
 - Flag(s) bei Erfolg
-- Vorlegend in Form einer VM
+- Vorlegend als VM
 - Zugangsmethode zur VM
 
-Reverse-Engineering Challenge
+Reverse-Engineering-Challenge
 ==============================
-Beispiel für künfige Challenges
-
+Die Reverse-Engineering-Challenge soll als Beispiel für künfige Challenges dienen.
 
 Thema & Motivation
 -------------------
@@ -89,28 +89,37 @@ Diese drei Hauptaufgaben stellen jeweils eine Stage dar, an deren Ende eine Flag
 
 Technische Realisiertung
 ------------------------
-- Lubuntu VM
-- Java-Game
-- Webserver mit Scoreboard
-- VNC-Server
+Die Challege läuft auf einer Lubuntu-VM, die ausgehend von folgendem Image erstellt wurde: http://www.trendsigma.net/vmware/lubuntu1204.html Auf ihr befinden sich zum einen das Spiel, was mit Java ausgeführt werden kann, und zum anderen ein Webserver, auf dem das "Online"-Scoreboard gehostet wird. Das Spiel wurde <some Words from Tim> erstellt, das Scoreboard ist in PHP realisiert; Scores werden in Plaintext-Files gespeichert.
 
-wird noch ausformuliert ...
+Die Kommunikation zwischen Spiel und Scoreboard funktioniert über GET-Parameter. Das Scoreboard bietet eine addscore.php, der die Parameter score und key übergeben werden muss, und validatekey.php, die einen Key auf Validität prüft. Zu Testzwecken wurde noch generatekey.php mit Parameter name erstellt, welche in der finalen Version natürlich nicht vorhanden ist.
+
+Weiterhin wurde Folgendes an der VM getan:
+
+- Installation von OpenJDK 7
+- Änderung der Rechte, sodass Anwender nicht auf die Dateien des Scoreboards zugreifen können
+- Entfernen des Standardusers aus der sudoers-File
+- Einrichten eines VNC-Servers um eine Verbindung zur VM zu ermöglichen
+- Automatischer Start von Webserver und VNC-Server
+- Installation von Tools wie Hexeditor, strings, etc.
+- Erstellen einer Readme-File in der erklärt wird, wie das Tastaturlayout geändert und das Spiel gestartet werden kann
+- "Aufräumen" (leeren von Browser-History, .bash_history, etc.)
 
 Daten/Misc
 ----------
-- komplettes Spiel (ohne Lizenschlussel und Flags etc.) als Download nach beenden des Szenarios
-- Licence-Key: 4M8K-15BM-16JN-2342
+- Komplettes Spiel (ohne Lizenschlussel und Flags etc.) als Download nach beenden des Szenarios
+- Licence-Key des Spiels: 4M8K-15BM-16JN-2342
 - Root-Password Lubuntu-VM: <in finaler Version aber nicht public auf github ^^>
 
 
 Verlauf des Projektes
 ======================
-- Erarbeiten möglicher Themengebiete
-- Konzeption Challengestruktur
-- Konzeption Flagsystem
-- Umsetzung Flagsystem
-- Konzeption Beispielchallenge
-- Umsetzung Beispielchallenge
+
+#. Erarbeiten möglicher Themengebiete
+#. Konzeption Challengestruktur
+#. Konzeption Flagsystem
+#. Umsetzung Flagsystem
+#. Konzeption Beispielchallenge
+#. Umsetzung Beispielchallenge
 	+ Game
 	+ Scoreboard
 	+ VM
